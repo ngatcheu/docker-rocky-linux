@@ -15,7 +15,7 @@ dnf install -y docker-ce docker-ce-cli containerd.io
 echo "Setting up docker service"
 systemctl enable docker
 systemctl start docker
-systemctl status docker
+
 
 echo "Adding permissions to current user for docker, attempting to reload group membership"
 usermod -aG docker -a $USER
@@ -25,4 +25,5 @@ newgrp $GROUP
 unset GROUP
 
 echo "Install completed, though you will probably require logout/login if the following command fails:"
+systemctl status docker
 docker ps
